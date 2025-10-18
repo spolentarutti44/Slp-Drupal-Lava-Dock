@@ -1,0 +1,30 @@
+services:
+  drupal1:
+    image: drupal:11
+    ports:
+      - "80:80"
+    volumes:
+      - ./drupal-data:/opt/drupal
+    depends_on:
+      - 'mariadb1'
+
+  mariadb1:
+    image: mariadb:10.11
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    environment:
+      - MARIADB_ROOT_PASSWORD=mariadb
+      - MARIADB_DATABASE=drupaldb
+      - MARIADB_USER=mariadb
+      - MARIADB_PASSWORD=mariadb
+
+  "adminer":
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - 'mariadb1'
+
+volumes:
+  drupal-data:
+  mariadb-data:

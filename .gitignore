@@ -1,0 +1,43 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore Docker
+*.log
+docker-compose.override.yml
+.env
+
+# Node and npm
+node_modules/
+npm-debug.log
+
+# Drupal specific
+sites/*/files
+sites/*/private
+settings.php
+
+# IDE/editor specific
+.idea/
+*.swp
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# General backup files
+*.bak
+*.backup
+
+# Log and debug files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Other custom excludes
+/drupalMain/drupal-data/
+/drupalMain/mariadb-data/
+/drupalMain/laravel-data/
+/drupalMain/ollama-data/
