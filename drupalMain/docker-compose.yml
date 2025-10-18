@@ -1,39 +1,30 @@
 services:
-  # Drupal CMS Service
   drupal1:
     image: drupal:11
-    container_name: drupal1
     ports:
       - "80:80"
     volumes:
       - ./drupal-data:/opt/drupal
-    environment:
-      - DRUPAL_DATABASE_HOST=mariadb1
-      - DRUPAL_DATABASE_PORT=3306
-      - DRUPAL_DATABASE_NAME=drupaldb
-      - DRUPAL_DATABASE_USER=mariadb
-      - DRUPAL_DATABASE_PASSWORD=mariadb
     depends_on:
-      - mariadb1
-    networks:
-      - app-network
-    restart: unless-stopped
+      - 'mariadb1'
 
-  # MariaDB for Drupal
   mariadb1:
     image: mariadb:10.11
-    container_name: mariadb1
     volumes:
-      - ./mariadb-data:/var/lib/mysql
+      - mariadb-data:/var/lib/mysql
     environment:
       - MARIADB_ROOT_PASSWORD=mariadb
       - MARIADB_DATABASE=drupaldb
       - MARIADB_USER=mariadb
       - MARIADB_PASSWORD=mariadb
-    networks:
-      - app-network
-    restart: unless-stopped
+
+  "adminer":
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - 'mariadb1'
 
 volumes:
-  drupalMain/drupal-data:
-  drupalMain/mariadb-data:
+  drupal-data:
+  mariadb-data:
