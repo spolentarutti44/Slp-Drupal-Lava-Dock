@@ -13,6 +13,7 @@ services:
   laravel-db:      # MySQL/PostgreSQL for Laravel (or share with Drupal)
   llm-service:    opea/ollama
 
+Please include a setup.ps1 file to initialize the folders and docker 
 
   ### Multi-Language E-Learning Platform
 

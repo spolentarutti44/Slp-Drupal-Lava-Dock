@@ -41,3 +41,6 @@ Thumbs.db
 /drupalMain/mariadb-data/
 /drupalMain/laravel-data/
 /drupalMain/ollama-data/
+/drupalMain/laravel-app/storage/
+/drupalMain/laravel-db-data/
+
